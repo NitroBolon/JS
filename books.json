@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "title": "tytul1",
+      "author": "autor1",
+      "amount": 4,
+      "description": "ksiazka1",
+      "genre": "horror",
+      "id": 1
+    },
+    {
+      "title": "12312",
+      "author": "123213",
+      "amount": 7,
+      "description": "123213",
+      "genre": "dramat",
+      "id": 4
+    },
+    {
+      "title": "qweqwe",
+      "author": "qweqw",
+      "amount": 1231,
+      "description": "qwe",
+      "genre": "dramat",
+      "id": 5
+    },
+    {
+      "title": "123123",
+      "author": "12321",
+      "amount": 3213213,
+      "description": "12312",
+      "genre": "dramat",
+      "id": 6
+    }
+  ]
+}

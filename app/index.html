@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="biblioteka">
+<head>
+ <meta charset="utf-8">
+ <title>Angular</title>
+ <link rel="stylesheet" href="app.css" />
+
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="library.js"></script>
+</head>
+<body ng-controller="BibController as library">
+  <h1>Library</h1>
+  <form name="bookForm" ng-controller="BookController as bookCtrl"
+ng-submit="bookForm.$valid && bookCtrl.add(library.books)"
+ novalidate>
+ Tytuł: <input ng-model="bookCtrl.book.title" required /> <br>
+ Autor: <input ng-model="bookCtrl.book.author" required /><br>
+ Ilość: <input type="number" ng-model="bookCtrl.book.amount" required min="0" /><br>
+Opis: <input ng-model="bookCtrl.book.description" required /><br>
+ Gatunek:
+ <select ng-model="bookCtrl.book.genre" required>
+ <option value="fantasy">Fantasy</option>
+ <option value="dramat">Dramat</option>
+ <option value="horror">Horror</option>
+ </select>
+ <input type="submit" value="Dodaj" ng-disabled="!bookForm.$valid"/>
+</form>
+  Search: <input class='search' type="text" ng-model="searchText" />
+  Sort by: 
+  <input type="button" value="Tytuł" ng-click="library.setorder('title')"/>
+  <input type="button" value="Autor" ng-click="library.setorder('author')"/>
+  <table class="center" ng-controller="BookController as bookCtrl">
+    <tr>
+      <td>Tytuł</td>
+      <td>Autor</td>
+      <td>Gatunek</td>
+      <td>Opis</td>
+      <td>Ilość</td>
+      <td>Edycja</td>
+      <td>Usunięcie</td>
+    </tr>
+    <tr ng-repeat="book in library.books | orderBy:library.order |
+    filter: searchText">
+   <td>{{book.title}}</td>
+   <td>{{book.author}}</td>
+   <td>{{book.genre}}</td>
+   <td>{{book.description}}</td>
+     <td>{{book.amount}}</td>
+      <td><form name="putbookForm" ng-submit="putbookForm.$valid && bookCtrl.update(library.books, book.id)"
+         novalidate>
+         Tytuł: <input ng-model="bookCtrl.book.title" required /> <br>
+         Autor: <input ng-model="bookCtrl.book.author" required /><br>
+         Ilość: <input type="number" ng-model="bookCtrl.book.amount" required min="0" /><br>
+         Opis: <input ng-model="bookCtrl.book.description" required /><br>
+         Gatunek:
+         <select ng-model="bookCtrl.book.genre" required>
+         <option value="fantasy">Fantasy</option>
+         <option value="dramat">Dramat</option>
+         <option value="horror">Horror</option>
+         </select>
+         <input type="submit" value="Edytuj" ng-disabled="!putbookForm.$valid"/>
+         </form></td>
+      <td><input type="button" value="Delete" ng-click="bookCtrl.delete(library.books, book.id)"/></td>
+   </tr>
+  </table>
+
+ </body>
+ 
+</html>

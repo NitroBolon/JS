@@ -1,0 +1,30 @@
+body {
+    background-color: lightblue;
+    text-align:center;
+}
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+h1 {
+    font-size:70px;
+}
+
+input.search {
+    margin-right:10%;
+    margin-top:3%;
+}
+
+table, th , td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
